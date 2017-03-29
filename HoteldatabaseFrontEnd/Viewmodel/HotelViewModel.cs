@@ -10,7 +10,7 @@ using System.Windows.Input;
 namespace HoteldatabaseFrontEnd.Viewmodel
 {
     public class HotelViewModel : INotifyPropertyChanged
-    {
+    { // test
 
         public HotelCatalogSingleton HotelCatalogSingleton { get; set; }
         private int guest_no;
