@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HoteldatabaseFrontEnd.Model
 {
-  public  class HotelCatalogSingleton
+  public  class GuestCatalogSingleton
     {
         private ObservableCollection<Guest> guests;
 
@@ -19,21 +19,21 @@ namespace HoteldatabaseFrontEnd.Model
             set { guests = value; }
         }
 
-        private static HotelCatalogSingleton instance;
+        private static GuestCatalogSingleton instance;
 
 
-        public static HotelCatalogSingleton Instance
+        public static GuestCatalogSingleton Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new HotelCatalogSingleton();
+                    instance = new GuestCatalogSingleton();
                 }
                 return instance;
             }
         }
-        public HotelCatalogSingleton()
+        public GuestCatalogSingleton()
         {
             Guests = new ObservableCollection<Guest>();
             
