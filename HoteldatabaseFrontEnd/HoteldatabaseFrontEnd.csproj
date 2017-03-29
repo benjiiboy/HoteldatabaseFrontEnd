@@ -102,6 +102,7 @@
     <Compile Include="Model\Hotel.cs" />
     <Compile Include="Model\GuestCatalogSingleton.cs" />
     <Compile Include="Model\Room.cs" />
+    <Compile Include="Persistency\PersistencyService.cs" />
     <Compile Include="Viewmodel\GuestViewModel.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
