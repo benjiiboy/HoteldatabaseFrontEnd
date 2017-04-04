@@ -36,5 +36,10 @@ namespace HoteldatabaseFrontEnd
         {
 
         }
+
+        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

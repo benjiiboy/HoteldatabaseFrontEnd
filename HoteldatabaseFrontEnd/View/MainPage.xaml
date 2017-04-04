@@ -22,7 +22,7 @@
         <Button x:Name="Create" Content="Create" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Width="90" Command="{Binding CreateGuestCommand}"/>
         <Button x:Name="Update" Content="Update" HorizontalAlignment="Left" Margin="115,185,0,0" VerticalAlignment="Top" Width="89" Command="{Binding UpdateGuestCommand}"/>
         <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="225,185,0,0" VerticalAlignment="Top" Width="90" Command="{Binding DeleteGuestCommand}"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="257" Margin="357,0,0,408" VerticalAlignment="Bottom" Width="251" SelectedItem="{Binding SelectedGuest}"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="257" Margin="357,0,0,408" VerticalAlignment="Bottom" Width="251" SelectedItem="{Binding SelectedGuest}" SelectionChanged="listView_SelectionChanged" ItemsSource="{Binding GuestCatalogSingleton.Guests}"/>
         <TextBlock x:Name="Guestlisteview" TextWrapping="Wrap" Text="Guest List" Height="40" FontWeight="Bold" FontSize="30" Margin="399.998,9.446,707.964,670.554" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <TextBlock.RenderTransform>
                 <CompositeTransform Rotation="0.623"/>
