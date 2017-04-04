@@ -26,5 +26,15 @@ namespace HoteldatabaseFrontEnd
         {
             this.InitializeComponent();
         }
+
+        private void TextBoxguestnummer_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBoxaddress_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
