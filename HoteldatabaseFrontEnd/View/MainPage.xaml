@@ -16,13 +16,13 @@
         <TextBlock x:Name="guestnumber" TextWrapping="Wrap" Text="Guest number" RenderTransformOrigin="0.5,0.5" Margin="286,159,844,531" FontSize="20"/>
         <TextBlock x:Name="name" HorizontalAlignment="Left" Margin="286,194,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Height="30" Width="150" FontSize="20"/>
         <TextBlock x:Name="address" HorizontalAlignment="Left" Margin="286,229,0,0" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Height="30" Width="150" FontSize="20"/>
-        <TextBox x:Name="TextBoxguestnummer" HorizontalAlignment="Left" Margin="441,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30" TextChanged="TextBoxguestnummer_TextChanged" PlaceholderText="guestnummer"/>
-        <TextBox x:Name="TextBoxname" HorizontalAlignment="Left" Margin="441,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30" PlaceholderText="name"/>
-        <TextBox x:Name="TextBoxaddress" HorizontalAlignment="Left" Margin="441,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30" TextChanged="TextBoxaddress_TextChanged" PlaceholderText="address"/>
+        <TextBox x:Name="TextBoxguestnummer" HorizontalAlignment="Left" Margin="441,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30" TextChanged="TextBoxguestnummer_TextChanged" PlaceholderText="guestnummer" Text="{Binding Guest_No, Mode=TwoWay}"/>
+        <TextBox x:Name="TextBoxname" HorizontalAlignment="Left" Margin="441,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30" PlaceholderText="name" Text="{Binding Name, Mode=TwoWay}"/>
+        <TextBox x:Name="TextBoxaddress" HorizontalAlignment="Left" Margin="441,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30" TextChanged="TextBoxaddress_TextChanged" PlaceholderText="address" Text="{Binding Address, Mode=TwoWay}"/>
         <Button x:Name="Create" Content="Create" HorizontalAlignment="Left" Margin="286,289,0,0" VerticalAlignment="Top" Width="90" Command="{Binding CreateGuestCommand}"/>
         <Button x:Name="Update" Content="Update" HorizontalAlignment="Left" Margin="391,289,0,0" VerticalAlignment="Top" Width="89" Command="{Binding UpdateGuestCommand}"/>
         <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="501,289,0,0" VerticalAlignment="Top" Width="90" Command="{Binding DeleteGuestCommand, Mode=TwoWay}"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="257" Margin="643,0,0,323" VerticalAlignment="Bottom" Width="555" SelectedItem="{Binding SelectedGuest, Mode=TwoWay}" ItemsSource="{Binding GuestCatalogSingleton.Guests, Mode=TwoWay}">
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="489" Margin="643,0,0,91" VerticalAlignment="Bottom" Width="555" SelectedItem="{Binding SelectedGuest, Mode=TwoWay}" ItemsSource="{Binding GuestCatalogSingleton.Guests, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Name=" border" BorderBrush="Black" BorderThickness="1" Padding="5" Margin="5">
@@ -47,8 +47,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <TextBlock x:Name="Guestlisteview" TextWrapping="Wrap" Text="Guest List" Height="40" FontWeight="Bold" FontSize="30" Margin="678.998,91.446,428.964,588.554" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-        </TextBlock>
+        <TextBlock x:Name="Guestlisteview" TextWrapping="Wrap" Text="Guest List" Height="40" FontWeight="Bold" FontSize="30" Margin="676,59,432,621" RenderTransformOrigin="0.5,0.5"/>
 
     </Grid>
 </Page>
