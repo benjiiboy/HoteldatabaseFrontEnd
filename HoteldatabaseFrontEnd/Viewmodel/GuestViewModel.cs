@@ -9,12 +9,12 @@ using System.Windows.Input;
 
 namespace HoteldatabaseFrontEnd.Viewmodel
 {
-    public class HotelViewModel : INotifyPropertyChanged
-    { 
+    public class GuestViewModel : INotifyPropertyChanged
+    { // test
 
-        public HotelCatalogSingleton HotelCatalogSingleton { get; set; }
+        public GuestCatalogSingleton GuestCatalogSingleton { get; set; }
         private int guest_no;
-        // 
+
         public int Guest_No
         {
             get { return guest_no; }
@@ -42,7 +42,7 @@ namespace HoteldatabaseFrontEnd.Viewmodel
         public Guest SelectedGuest
         {
             get { return selectedguest; }
-            set { selectedguest = value; OnPropertyChanged(); }
+            set { selectedguest = value; OnPropertyChanged(nameof(SelectedGuest)); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -55,6 +55,36 @@ namespace HoteldatabaseFrontEnd.Viewmodel
             }
         }
 
+        private ICommand createGuestCommand;
+
+        public ICommand CreateGuestCommand
+        {
+            get { return createGuestCommand; }
+            set { createGuestCommand = value; }
+        }
+
+        private ICommand deleteGuestCommand;
+
+        public ICommand DeleteGuestCommand
+        {
+            get { return deleteGuestCommand; }
+            set { deleteGuestCommand = value; }
+        }
+
+        private ICommand updateGuestCommand;
+
+        public ICommand UpdateGuestCommand
+        {
+            get { return updateGuestCommand; }
+            set { updateGuestCommand = value; }
+        }
+
+        // public Handler.GuestHandler GuestHandler {get; set;}
+
+        public GuestViewModel()
+        {
+            
+        }
 
     }
 }

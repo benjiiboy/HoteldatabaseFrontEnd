@@ -95,12 +95,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Handler\GuestHandler.cs" />
     <Compile Include="Model\Booking.cs" />
     <Compile Include="Model\Guest.cs" />
     <Compile Include="Model\Hotel.cs" />
-    <Compile Include="Model\HotelCatalogSingleton.cs" />
+    <Compile Include="Model\GuestCatalogSingleton.cs" />
     <Compile Include="Model\Room.cs" />
-    <Compile Include="Viewmodel\HotelViewModel.cs" />
+    <Compile Include="Persistency\PersistencyService.cs" />
+    <Compile Include="Viewmodel\GuestViewModel.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
