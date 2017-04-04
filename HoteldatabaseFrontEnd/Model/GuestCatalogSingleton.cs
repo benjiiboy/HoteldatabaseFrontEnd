@@ -36,7 +36,7 @@ namespace HoteldatabaseFrontEnd.Model
         public GuestCatalogSingleton()
         {
             Guests = new ObservableCollection<Guest>();
-            HoteldatabaseFrontEnd.Persistency.PersistencyService.LoadEventsFromJsonAsync();
+            HentJson();
             
         }
 
@@ -55,6 +55,11 @@ namespace HoteldatabaseFrontEnd.Model
         {
             //Magnler at lave en update
             //Guests.Update(g);
+        }
+
+        public async void HentJson()
+        {
+            guests = await Persistency.PersistencyService.LoadEventsFromJsonAsync();
         }
 
 
