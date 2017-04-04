@@ -24,11 +24,13 @@ namespace HoteldatabaseFrontEnd.Handler
             tempguest.Name = GuestViewModel.Name;
 
             Model.GuestCatalogSingleton.Instance.AddGuest(tempguest);
+            HoteldatabaseFrontEnd.Persistency.PersistencyService.SaveGuestAsJsonAsync();
         }
 
-        public async void DeleteGuest()
+        public void DeleteGuest()
         {
-            GuestViewModel.GuestCatalogSingleton.RemoveGuest(GuestViewModel.SelectedGuest);
+           GuestViewModel.GuestCatalogSingleton.RemoveGuest(GuestViewModel.SelectedGuest);
+            HoteldatabaseFrontEnd.Persistency.PersistencyService.SaveGuestAsJsonAsync();
         }
 
 

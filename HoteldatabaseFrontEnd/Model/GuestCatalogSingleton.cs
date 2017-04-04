@@ -36,22 +36,25 @@ namespace HoteldatabaseFrontEnd.Model
         public GuestCatalogSingleton()
         {
             Guests = new ObservableCollection<Guest>();
+            HoteldatabaseFrontEnd.Persistency.PersistencyService.LoadEventsFromJsonAsync();
             
         }
 
         public void AddGuest(Guest g)
         {
+            Guests.Add(g);
 
         }
 
         public void RemoveGuest(Guest g)
         {
-
+            Guests.Remove(g);
         }
 
         public void UpdateGuest(Guest g)
         {
-
+            //Magnler at lave en update
+            //Guests.Update(g);
         }
 
 
