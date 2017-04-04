@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HoteldatabaseFrontEnd.Model;
 using System.Windows.Input;
+using HoteldatabaseFrontEnd.Common;
 
 namespace HoteldatabaseFrontEnd.Viewmodel
 {
@@ -13,6 +14,7 @@ namespace HoteldatabaseFrontEnd.Viewmodel
     { // test
 
         public GuestCatalogSingleton GuestCatalogSingleton { get; set; }
+
         private int guest_no;
 
         public int Guest_No
@@ -79,11 +81,16 @@ namespace HoteldatabaseFrontEnd.Viewmodel
             set { updateGuestCommand = value; }
         }
 
-        // public Handler.GuestHandler GuestHandler {get; set;}
+        public Handler.GuestHandler GuestHandler {get; set;}
 
         public GuestViewModel()
         {
-            
+            GuestHandler = new HoteldatabaseFrontEnd.Handler.GuestHandler(this);
+            GuestCatalogSingleton = Model.GuestCatalogSingleton.Instance;
+
+            CreateGuestCommand = new RelayCommand(GuestHandler.CreateGuest);
+            DeleteGuestCommand = new RelayCommand(GuestHandler.DeleteGuest);
+            //UpdateGuestCommand = new RelayCommand(GuestHandler.UpdateGuest);
         }
 
     }

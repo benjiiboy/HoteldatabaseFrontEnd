@@ -12,21 +12,42 @@
         <Grid.DataContext>
             <Viewmodel:GuestViewModel/>
         </Grid.DataContext>
-        <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Guest" Height="40" Width="90" FontWeight="Bold" FontSize="30" Margin="10,10,1180,670"/>
-        <TextBlock x:Name="guestnumber" TextWrapping="Wrap" Text="Guest number" RenderTransformOrigin="0.5,0.5" Margin="10,55,1120,635" FontSize="20"/>
-        <TextBlock x:Name="name" HorizontalAlignment="Left" Margin="10,90,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Height="30" Width="150" FontSize="20"/>
-        <TextBlock x:Name="address" HorizontalAlignment="Left" Margin="10,125,0,0" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Height="30" Width="150" FontSize="20"/>
-        <TextBox x:Name="TextBoxguestnummer" HorizontalAlignment="Left" Margin="165,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30" TextChanged="TextBoxguestnummer_TextChanged" PlaceholderText="guestnummer"/>
-        <TextBox x:Name="TextBoxname" HorizontalAlignment="Left" Margin="165,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30" PlaceholderText="name"/>
-        <TextBox x:Name="TextBoxaddress" HorizontalAlignment="Left" Margin="165,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30" TextChanged="TextBoxaddress_TextChanged" PlaceholderText="address"/>
-        <Button x:Name="Create" Content="Create" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Width="90" Command="{Binding CreateGuestCommand}"/>
-        <Button x:Name="Update" Content="Update" HorizontalAlignment="Left" Margin="115,185,0,0" VerticalAlignment="Top" Width="89" Command="{Binding UpdateGuestCommand}"/>
-        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="225,185,0,0" VerticalAlignment="Top" Width="90" Command="{Binding DeleteGuestCommand}"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="257" Margin="357,0,0,408" VerticalAlignment="Bottom" Width="251" SelectedItem="{Binding SelectedGuest}"/>
-        <TextBlock x:Name="Guestlisteview" TextWrapping="Wrap" Text="Guest List" Height="40" FontWeight="Bold" FontSize="30" Margin="399.998,9.446,707.964,670.554" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
-            <TextBlock.RenderTransform>
-                <CompositeTransform Rotation="0.623"/>
-            </TextBlock.RenderTransform>
+        <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Guest" Height="40" Width="90" FontWeight="Bold" FontSize="30" Margin="286,59,904,621"/>
+        <TextBlock x:Name="guestnumber" TextWrapping="Wrap" Text="Guest number" RenderTransformOrigin="0.5,0.5" Margin="286,159,844,531" FontSize="20"/>
+        <TextBlock x:Name="name" HorizontalAlignment="Left" Margin="286,194,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Height="30" Width="150" FontSize="20"/>
+        <TextBlock x:Name="address" HorizontalAlignment="Left" Margin="286,229,0,0" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Height="30" Width="150" FontSize="20"/>
+        <TextBox x:Name="TextBoxguestnummer" HorizontalAlignment="Left" Margin="441,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30" TextChanged="TextBoxguestnummer_TextChanged" PlaceholderText="guestnummer"/>
+        <TextBox x:Name="TextBoxname" HorizontalAlignment="Left" Margin="441,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30" PlaceholderText="name"/>
+        <TextBox x:Name="TextBoxaddress" HorizontalAlignment="Left" Margin="441,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="30" TextChanged="TextBoxaddress_TextChanged" PlaceholderText="address"/>
+        <Button x:Name="Create" Content="Create" HorizontalAlignment="Left" Margin="286,289,0,0" VerticalAlignment="Top" Width="90" Command="{Binding CreateGuestCommand}"/>
+        <Button x:Name="Update" Content="Update" HorizontalAlignment="Left" Margin="391,289,0,0" VerticalAlignment="Top" Width="89" Command="{Binding UpdateGuestCommand}"/>
+        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="501,289,0,0" VerticalAlignment="Top" Width="90" Command="{Binding DeleteGuestCommand, Mode=TwoWay}"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="257" Margin="643,0,0,323" VerticalAlignment="Bottom" Width="555" SelectedItem="{Binding SelectedGuest, Mode=TwoWay}" ItemsSource="{Binding GuestCatalogSingleton.Guests, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Name=" border" BorderBrush="Black" BorderThickness="1" Padding="5" Margin="5">
+                        <Grid Height="auto" Width="240" >
+                            <Grid.RowDefinitions >
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Guest number:" Grid.ColumnSpan="2" Margin="0,0,235,0"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Guest_No}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Name:" Grid.ColumnSpan="2" Margin="0,0,235,0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Address:" Grid.ColumnSpan="2" Margin="0,0,235,0"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Address}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <TextBlock x:Name="Guestlisteview" TextWrapping="Wrap" Text="Guest List" Height="40" FontWeight="Bold" FontSize="30" Margin="678.998,91.446,428.964,588.554" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
         </TextBlock>
 
     </Grid>

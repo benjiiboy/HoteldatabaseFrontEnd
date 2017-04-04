@@ -28,7 +28,7 @@ namespace HoteldatabaseFrontEnd.Handler
 
         public async void DeleteGuest()
         {
-            GuestViewModel.GuestCatalogSingleton.RemoveGuest(GuestViewModel.SelectedGuest);
+           GuestViewModel.GuestCatalogSingleton.RemoveGuest(GuestViewModel.SelectedGuest);
         }
 
 
