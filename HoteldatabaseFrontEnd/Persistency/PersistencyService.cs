@@ -9,6 +9,7 @@ using HoteldatabaseFrontEnd.Model;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Windows.UI.Popups;
 
 namespace HoteldatabaseFrontEnd.Persistency
 {
@@ -17,12 +18,39 @@ namespace HoteldatabaseFrontEnd.Persistency
         const string serverUrl = "http://hotelws.azurewebsites.net";
 
         public ObservableCollection<Guest> Guests { get; set; }
-
-        public static async void SaveGuestAsJsonAsync()
+        
+        
+        
+        /*Opretter et objekt og lægger det i skyen + opdaterer tabel i view*/
+        public static void SaveGuestAsJsonAsync(Guest g)
         {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
 
+                try
+                {
+                    var response = client.PostAsJsonAsync<Guest>("api/guests", g).Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ShowMessage("Du har oprettet en ny guest");
+                    }
+                    else
+                    {
+                        ShowMessage("FEJL, Guest blev ikke oprettet: " + response.StatusCode);
+                    }
+                }
+                catch (Exception e)
+                {
+
+                    ShowMessage("Der er sket en fejl: " + e.Message);
+                }
+            }
         }
-
+        
+        
+        /*Henter data fra sky og opdatere view*/
         public static ObservableCollection<Model.Guest> LoadEventsFromJsonAsync()
         {
             using (var client = new HttpClient())
@@ -46,13 +74,26 @@ namespace HoteldatabaseFrontEnd.Persistency
                 catch (Exception)
                 {
 
-                    throw;
+                    ShowMessage("Fejl under hetning af data");
                 }
                 return null;
             }
         }
 
 
+        /*Sletning af et objekt og opdatere view*/
+
+
+
+
+
+        /*kode til visning af fejl*/
+
+            public static async void ShowMessage(string content)
+        {
+            MessageDialog messageDialog = new MessageDialog(content);
+            await messageDialog.ShowAsync();
+        }
 
 
 
