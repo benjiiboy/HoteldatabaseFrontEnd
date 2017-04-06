@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HoteldatabaseFrontEnd.Persistency;
 
 namespace HoteldatabaseFrontEnd.Model
 {
@@ -49,6 +50,7 @@ namespace HoteldatabaseFrontEnd.Model
         public void RemoveGuest(Guest g)
         {
             Guests.Remove(g);
+            PersistencyService.DeleteGuestFromJsonAsync(g);
         }
 
         public void UpdateGuest(Guest g)
@@ -59,7 +61,7 @@ namespace HoteldatabaseFrontEnd.Model
 
         public void HentJson()
         {
-            guests = Persistency.PersistencyService.LoadEventsFromJsonAsync();
+            guests = Persistency.PersistencyService.LoadGuestFromJsonAsync();
         }
 
 

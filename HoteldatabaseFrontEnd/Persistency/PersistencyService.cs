@@ -51,7 +51,7 @@ namespace HoteldatabaseFrontEnd.Persistency
         
         
         /*Henter data fra sky og opdatere view*/
-        public static ObservableCollection<Model.Guest> LoadEventsFromJsonAsync()
+        public static ObservableCollection<Model.Guest> LoadGuestFromJsonAsync()
         {
             using (var client = new HttpClient())
             {
@@ -82,8 +82,33 @@ namespace HoteldatabaseFrontEnd.Persistency
 
 
         /*Sletning af et objekt og opdatere view*/
+        public static void DeleteGuestFromJsonAsync(Guest guest)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
+                string urlstring = "api/guests/" + guest.Guest_No;
+                try
+                {
+                    HttpResponseMessage response = client.DeleteAsync(urlstring).Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ShowMessage("Du har nu slettet den valgte gæst");
+                    }
+                    else
+                    {
+                        ShowMessage("Gæsten blev ikke slettet");
+                    }
+                }
+                catch (Exception e)
+                {
 
-
+                    ShowMessage("Der er sket en fejl: " + e.Message);
+                }
+            }
+        }
+ 
 
 
 
