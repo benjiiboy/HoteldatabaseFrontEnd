@@ -56,7 +56,8 @@ namespace HoteldatabaseFrontEnd.Model
         public void UpdateGuest(Guest g)
         {
             //Magnler at lave en update
-            //Guests.Update(g);
+            Guests.Clear();
+            PersistencyService.UpdateGuestListJsonAsync(g);
         }
 
         public void HentJson()

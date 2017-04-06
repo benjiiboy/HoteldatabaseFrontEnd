@@ -90,7 +90,7 @@ namespace HoteldatabaseFrontEnd.Viewmodel
 
             CreateGuestCommand = new RelayCommand(GuestHandler.CreateGuest);
             DeleteGuestCommand = new RelayCommand(GuestHandler.DeleteGuest);
-            //UpdateGuestCommand = new RelayCommand(GuestHandler.UpdateGuest);
+            UpdateGuestCommand = new RelayCommand(GuestHandler.UpdateGuestRigtig);
         }
 
     }

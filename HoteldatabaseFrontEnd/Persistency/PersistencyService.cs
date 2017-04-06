@@ -111,6 +111,37 @@ namespace HoteldatabaseFrontEnd.Persistency
  
 
 
+        /*Put til update metoden */
+
+        public static void UpdateGuestListJsonAsync(Guest guest)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Clear();
+                try
+                {
+                    var response = client.PutAsJsonAsync<Guest>("api/guests/" + guest.Guest_No, guest).Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        ShowMessage("Gæsten blev opdateret");
+                    }
+                    else
+                    {
+                        ShowMessage("Gæsten blev ikke opdateret");
+                    }
+                }
+                catch (Exception e)
+                {
+
+                    ShowMessage("Fejl, gæsten blev ikke opdateret: " + e.Message);
+                }
+            }
+        }
+
+
+
+
 
         /*kode til visning af fejl*/
 

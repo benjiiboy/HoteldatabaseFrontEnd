@@ -33,6 +33,10 @@ namespace HoteldatabaseFrontEnd.Handler
            // HoteldatabaseFrontEnd.Persistency.PersistencyService.SaveGuestAsJsonAsync();
         }
 
+        public void UpdateGuestRigtig()
+        {
+            GuestViewModel.GuestCatalogSingleton.UpdateGuest(GuestViewModel.SelectedGuest);
+        }
 
 
 
