@@ -23,7 +23,7 @@ namespace HoteldatabaseFrontEnd.Persistency
 
         }
 
-        public static async Task<ObservableCollection<Model.Guest>> LoadEventsFromJsonAsync()
+        public static ObservableCollection<Model.Guest> LoadEventsFromJsonAsync()
         {
             using (var client = new HttpClient())
             {
@@ -38,7 +38,9 @@ namespace HoteldatabaseFrontEnd.Persistency
                     HttpResponseMessage response = client.GetAsync(urlstring).Result;
                     if (response.IsSuccessStatusCode)
                     {
-                        var guestsList = response.Content.
+                        var guestsList =  response.Content.ReadAsAsync<ObservableCollection<Guest>>().Result;
+
+                         return guestsList;
                     }
                 }
                 catch (Exception)
@@ -46,6 +48,7 @@ namespace HoteldatabaseFrontEnd.Persistency
 
                     throw;
                 }
+                return null;
             }
         }
 

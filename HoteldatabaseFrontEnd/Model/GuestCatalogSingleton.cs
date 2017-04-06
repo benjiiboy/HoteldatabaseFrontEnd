@@ -57,9 +57,9 @@ namespace HoteldatabaseFrontEnd.Model
             //Guests.Update(g);
         }
 
-        public async void HentJson()
+        public void HentJson()
         {
-            guests = await Persistency.PersistencyService.LoadEventsFromJsonAsync();
+            guests = Persistency.PersistencyService.LoadEventsFromJsonAsync();
         }
 
 
