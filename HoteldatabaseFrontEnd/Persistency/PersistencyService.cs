@@ -7,20 +7,62 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using HoteldatabaseFrontEnd.Model;
 using Newtonsoft.Json;
-
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace HoteldatabaseFrontEnd.Persistency
 {
    public class PersistencyService
     {
-        private readonly Task<StorageFile> Localfolder;
-        private object filnavn;
+        const string serverUrl = "http://hotelws.azurewebsites.net";
 
         public ObservableCollection<Guest> Guests { get; set; }
 
+        public static async void SaveGuestAsJsonAsync()
+        {
+
+        }
+
+        public static async Task<ObservableCollection<Model.Guest>> LoadEventsFromJsonAsync()
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(serverUrl);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Clear();
+
+                string urlstring = "api/guests";
+
+                try
+                {
+                    HttpResponseMessage response = client.GetAsync(urlstring).Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var guestsList = response.Content.
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+        }
+
+
+
+
+
+
+
+        #region gammel kode for gem og hent lokalt
+        private readonly Task<StorageFile> Localfolder;
+        private object filnavn;
+
+
         const string fileName = "hoteldbGuest.json";
 
-        public static async void SaveGuestAsJsonAsync()
+        public static async void SaveGuestAsJsonAsyncgammel()
         {
             StorageFile localFile = await ApplicationData.Current.LocalFolder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
             string JsonData = JsonConvert.SerializeObject(Model.GuestCatalogSingleton.Instance.Guests);
@@ -28,7 +70,7 @@ namespace HoteldatabaseFrontEnd.Persistency
         }
 
 
-        public static async Task<ObservableCollection<Model.Guest>> LoadEventsFromJsonAsync()
+        public static async Task<ObservableCollection<Model.Guest>> LoadEventsFromJsonAsyncgammel()
         {
             StorageFile localFile = await ApplicationData.Current.LocalFolder.GetFileAsync(fileName);
             String jsonData = await FileIO.ReadTextAsync(localFile);
@@ -43,7 +85,7 @@ namespace HoteldatabaseFrontEnd.Persistency
                 Model.GuestCatalogSingleton.Instance.Guests.Add(i);
             }
         }
-
+        #endregion
 
 
 

@@ -17,7 +17,7 @@ namespace HotelWS.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Guest_No { get; set; }
+        public int? Guest_No { get; set; }
 
         [Required]
         [StringLength(30)]

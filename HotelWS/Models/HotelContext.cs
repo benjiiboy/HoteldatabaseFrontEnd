@@ -10,6 +10,7 @@ namespace HotelWS.Models
         public HotelContext()
             : base("name=HotelContext")
         {
+            base.Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual DbSet<Booking> Booking { get; set; }
